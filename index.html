@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samurai do Jurídico | Rodrigo Goltzman</title>
+<meta name="description" content="Faço advogados fecharem mais contratos com IA e tráfego pago. Diagnóstico gratuito do escritório, MaestrIA e comunidade.">
+<meta property="og:title" content="Samurai do Jurídico | Rodrigo Goltzman">
+<meta property="og:description" content="Faço advogados fecharem mais contratos com IA e tráfego pago.">
+<meta property="og:image" content="img/samurai.webp">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000000;
+    --card: #0d0d0d;
+    --card-2: #161616;
+    --linha: #232323;
+    --texto: #ffffff;
+    --texto-2: #bcbcbc;
+    --texto-3: #7d7d7d;
+    --vermelho: #ef2727;
+    --vermelho-2: #ff5757;
+    --vermelho-fundo: rgba(239, 39, 39, 0.10);
+    --vermelho-borda: rgba(239, 39, 39, 0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--texto); }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+    background: radial-gradient(120% 60% at 50% 0%, rgba(239,39,39,0.14) 0%, rgba(0,0,0,0) 60%), var(--bg);
+    min-height: 100vh; overflow-x: hidden;
+  }
+  main { max-width: 560px; margin: 0 auto; padding: 40px 16px 56px; }
+
+  .topo { text-align: center; }
+  .foto {
+    width: 112px; height: 112px; border-radius: 50%; margin: 0 auto 16px; display: block;
+    border: 3px solid var(--vermelho); background: var(--card-2); object-fit: cover;
+  }
+  h1 { font-size: 22px; font-weight: 800; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .apelido { color: var(--texto-3); font-size: 14px; margin: 0 0 14px; }
+  .frase { font-size: 19px; font-weight: 700; line-height: 1.35; margin: 0 auto 6px; max-width: 420px; }
+  .frase strong { color: var(--vermelho-2); font-weight: 800; }
+  .ceo { color: var(--texto-2); font-size: 14px; margin: 0; }
+  .ceo a { color: var(--texto); text-decoration: underline; text-underline-offset: 3px; }
+
+  .bloco { margin-top: 28px; }
+  .rotulo { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texto-3); margin: 0 0 10px 4px; }
+
+  .botao {
+    display: flex; align-items: center; gap: 14px; width: 100%;
+    padding: 16px 18px; margin-bottom: 10px; border-radius: 14px;
+    background: var(--card); border: 1px solid var(--linha);
+    color: var(--texto); text-decoration: none;
+    transition: transform .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .botao:hover, .botao:focus-visible { border-color: var(--vermelho-borda); background: var(--card-2); transform: translateY(-1px); outline: none; }
+  .botao .icone { flex: 0 0 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: var(--card-2); font-size: 20px; }
+  .botao .txt { flex: 1; min-width: 0; }
+  .botao .titulo { display: block; font-weight: 700; font-size: 16px; line-height: 1.3; }
+  .botao .sub { display: block; color: var(--texto-2); font-size: 13.5px; margin-top: 2px; }
+  .botao .seta { color: var(--texto-3); font-size: 18px; }
+
+  .botao.principal { background: var(--vermelho); border-color: var(--vermelho); padding: 20px 18px; }
+  .botao.principal .icone { background: rgba(0,0,0,0.22); }
+  .botao.principal .sub { color: rgba(255,255,255,0.88); }
+  .botao.principal .seta { color: #fff; }
+  .botao.principal:hover, .botao.principal:focus-visible { background: #d81f1f; border-color: #d81f1f; }
+
+  .sobre { background: var(--card); border: 1px solid var(--linha); border-radius: 14px; padding: 18px; color: var(--texto-2); font-size: 15px; }
+  .sobre p { margin: 0 0 10px; }
+  .sobre p:last-child { margin: 0; }
+  .sobre b { color: var(--texto); }
+  .sobre .codigo-titulo { color: var(--texto); font-weight: 700; font-size: 14px; margin: 14px 0 8px; }
+  .sobre .codigo-sub { font-size: 14px; margin: 0 0 10px; }
+  .codigo { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .codigo li { font-size: 13px; font-weight: 600; color: var(--texto); background: var(--vermelho-fundo); border: 1px solid var(--vermelho-borda); border-radius: 999px; padding: 4px 10px; }
+
+  .vozes { display: grid; gap: 10px; }
+  .voz { background: var(--card); border: 1px solid var(--linha); border-left: 3px solid var(--vermelho); border-radius: 12px; padding: 14px 16px; }
+  .voz q { display: block; font-size: 16px; font-weight: 600; quotes: "“" "”"; }
+  .voz span { display: block; color: var(--texto-3); font-size: 13px; margin-top: 4px; }
+
+  .redes { display: flex; justify-content: center; gap: 12px; margin-top: 32px; }
+  .redes a { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--card); border: 1px solid var(--linha); color: var(--texto-2); text-decoration: none; }
+  .redes a:hover, .redes a:focus-visible { color: var(--texto); border-color: var(--vermelho-borda); outline: none; }
+  .redes svg { width: 20px; height: 20px; fill: currentColor; }
+  .rodape { text-align: center; color: var(--texto-3); font-size: 12px; margin-top: 20px; }
+
+  /* entrada leve, em sequência */
+  .surge { opacity: 0; transform: translateY(8px); animation: surge .5s ease forwards; }
+  @keyframes surge { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .surge { opacity: 1; transform: none; animation: none; }
+    .botao { transition: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header class="topo surge" style="animation-delay:0s">
+    <img class="foto" src="img/samurai.webp" width="112" height="112" alt="Rodrigo Goltzman, o Samurai do Jurídico" fetchpriority="high">
+    <h1>Rodrigo Goltzman</h1>
+    <p class="apelido">⚔️ Meus amigos me chamam de Samurai</p>
+    <p class="frase">Faço advogados fecharem <strong>mais contratos</strong> com IA e tráfego pago.</p>
+    <p class="ceo">Fundador do Samurai Lab, criador da MaestrIA<br>CEO da <a href="https://instagram.com/impacto.mktjuridico" target="_blank" rel="noopener">Impacto Marketing Jurídico</a> · +300 escritórios já atendidos</p>
+  </header>
+
+  <section class="bloco surge" style="animation-delay:.08s" aria-label="Samurai Lab">
+    <p class="rotulo">Samurai Lab · IA para o escritório</p>
+    <a class="botao principal" data-destino="maestria-teste" href="https://maestria.samurailab.com.br/teste/" target="_blank" rel="noopener">
+      <span class="icone" aria-hidden="true">🤖</span>
+      <span class="txt">
+        <span class="titulo">Teste a MaestrIA grátis por 7 dias</span>
+        <span class="sub">A IA que trabalha no seu escritório enquanto você confere.</span>
+      </span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+    <a class="botao" data-destino="cohort" href="https://maestria.samurailab.com.br/lista-de-espera/" target="_blank" rel="noopener">
+      <span class="icone" aria-hidden="true">📋</span>
+      <span class="txt">
+        <span class="titulo">Lista de espera do Cohort MaestrIA</span>
+        <span class="sub">Aula ao vivo com entrega: você sai com a IA rodando.</span>
+      </span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <section class="bloco surge" style="animation-delay:.12s" aria-label="Impacto">
+    <p class="rotulo">Impacto · do anúncio ao contrato assinado</p>
+    <a class="botao" data-destino="diagnostico" href="https://form.respondi.app/2cNYE9AQ" target="_blank" rel="noopener">
+      <span class="icone" aria-hidden="true">🎯</span>
+      <span class="txt">
+        <span class="titulo">Diagnóstico gratuito do seu escritório</span>
+        <span class="sub">Meu time mostra onde você está perdendo contrato. Sem compromisso.</span>
+      </span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <section class="bloco surge" style="animation-delay:.16s" aria-label="Quem é o Samurai">
+    <p class="rotulo">Quem é o Samurai</p>
+    <div class="sobre">
+      <p>Passei anos levando cliente para escritório de advocacia. Até ver advogado pedir para <b>pausar a campanha</b> no meio do mês: não era falta de cliente, era falta de braço para atender quem chegava.</p>
+      <p>Por isso criei o <b>Samurai Lab</b> e a <b>MaestrIA</b>: a IA que faz o escritório dar conta de quem chega. E na <b>Impacto</b> cuido do caminho inteiro até o contrato assinado: posicionamento, tráfego pago, atendimento e vendas.</p>
+      <p class="codigo-titulo">⚔️ Meu código, inspirado no Bushido</p>
+      <p class="codigo-sub">Bushido é o "caminho do guerreiro", o código de conduta dos samurais. Adaptei os valores dele para o jeito como eu trabalho e trato cada cliente:</p>
+      <ul class="codigo">
+        <li>Honra</li><li>Maestria</li><li>Coragem</li><li>Respeito</li><li>Integridade</li><li>Comprometimento</li><li>Harmonia</li>
+      </ul>
+    </div>
+    <a class="botao" data-destino="podcast" href="https://www.youtube.com/watch?v=js8PEMjTNgE" target="_blank" rel="noopener" style="margin-top:10px">
+      <span class="icone" aria-hidden="true">🎙️</span>
+      <span class="txt">
+        <span class="titulo">Ouça minha história no SafeCast #75</span>
+        <span class="sub">O poder do tráfego pago na advocacia.</span>
+      </span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <section class="bloco surge" style="animation-delay:.24s" aria-label="O que dizem">
+    <p class="rotulo">O que dizem meus clientes e parceiros</p>
+    <div class="vozes">
+      <div class="voz"><q>O mestre, o cara que abriu inúmeros caminhos para vencer barreiras.</q><span>Cliente da comunidade</span></div>
+      <div class="voz"><q>Ético, profissional e justo.</q><span>Cliente da Impacto</span></div>
+      <div class="voz"><q>Mentor, acessível e generoso.</q><span>Cliente da comunidade</span></div>
+    </div>
+  </section>
+
+  <section class="bloco surge" style="animation-delay:.32s" aria-label="Fique por perto">
+    <p class="rotulo">Fique por perto</p>
+    <a class="botao" data-destino="comunidade" href="https://chat.whatsapp.com/JnI8m2gAIU87gaxtMkT0j3" target="_blank" rel="noopener">
+      <span class="icone" aria-hidden="true">💬</span>
+      <span class="txt">
+        <span class="titulo">Comunidade Impacto no WhatsApp</span>
+        <span class="sub">Grupo gratuito com conteúdo para advogados.</span>
+      </span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <nav class="redes surge" style="animation-delay:.4s" aria-label="Redes sociais">
+    <a href="https://instagram.com/samuraidojuridico" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 4.7a5.1 5.1 0 1 0 0 10.2 5.1 5.1 0 0 0 0-10.2zm0 8.4a3.3 3.3 0 1 1 0-6.6 3.3 3.3 0 0 1 0 6.6zm5.3-9.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg></a>
+    <a href="https://tiktok.com/@samuraidojuridico" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.2a6.2 6.2 0 1 0 5.3 6.1V8.6a7.9 7.9 0 0 0 4.6 1.5V6.8a4.6 4.6 0 0 1-4.6-4.6z"/></svg></a>
+    <a href="https://www.youtube.com/@samurailab.ads" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
+  </nav>
+  <p class="rodape">© Samurai do Jurídico</p>
+</main>
+<script>
+  // Repassa a origem (utm) de quem chegou aqui para os links de saída, para medir cada clique.
+  (function () {
+    try {
+      var entrada = new URLSearchParams(location.search);
+      document.querySelectorAll('a[data-destino]').forEach(function (a) {
+        var u = new URL(a.href);
+        u.searchParams.set('utm_source', entrada.get('utm_source') || 'instagram');
+        u.searchParams.set('utm_medium', 'bio');
+        u.searchParams.set('utm_campaign', 'links-samurai');
+        u.searchParams.set('utm_content', a.getAttribute('data-destino'));
+        a.href = u.toString();
+      });
+    } catch (e) { /* sem utm, os links seguem funcionando */ }
+  })();
+</script>
+</body>
+</html>
