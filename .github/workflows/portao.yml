@@ -1,0 +1,31 @@
+name: Portão
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  conferir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: HTML válido
+        run: npx --yes html-validate@8.18.2 "**/*.html"
+      - name: Sem travessão nos textos
+        run: |
+          if grep -rnP '\x{2014}|\x{2013}' --include='*.html' --include='*.md' .; then
+            echo "Achei travessão. Troque por vírgula, ponto ou dois pontos."; exit 1
+          fi
+      - name: Sem segredo no código
+        run: |
+          if grep -rniE '(api[_-]?key|token|secret|senha)\s*[:=]' --include='*.html' --include='*.js' .; then
+            echo "Parece haver segredo no código."; exit 1
+          fi
+      - name: Imagens leves
+        run: |
+          if [ -d img ]; then
+            grande=$(find img -type f -size +200k)
+            if [ -n "$grande" ]; then echo "Imagem acima de 200 KB: $grande"; exit 1; fi
+          fi
